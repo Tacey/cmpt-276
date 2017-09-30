@@ -1,0 +1,110 @@
+div.lb{
+  float: left;
+  width: 50%;
+  height: auto;
+  margin-top: 40px;
+
+  margin-left: 80px;
+  background-color: #e1eaea;
+
+}
+div.lbleft{
+  float: left;
+
+  margin-left: 50px;
+  margin-top: 0px;
+}
+ul.max2f{
+  float:left;
+  line-height: 350%;
+  list-style-type: none;
+  font-size: 30px;
+  font-weight: 600;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+
+  margin-top: auto;
+}
+div.lbright{
+  float: right;
+
+  margin-right:250px;
+  line-height: 450%;
+
+}
+ul.inputboxes{
+  float:right;
+  list-style-type: none;
+
+  margin-top: 0px;
+  line-height: 650%;
+}
+input[type="number"]{
+  width: 160px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+}
+div.histogram{
+  float: right;
+  background-color: #e1eaea;
+
+  margin-top: 40px;
+  margin-right: 60px;
+  width: 37%;
+}
+ul.max2f2{
+  float:left;
+  line-height: 150%;
+  list-style-type: none;
+  line-height: 250%;
+
+}
+div.hleft{
+  float: left;
+
+  font-size: 25px;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+  font-weight: 600;
+  margin-left: 25px;
+}
+div.hright{
+  float: right;
+
+  margin-right: 50px;
+  width: 300px;
+}
+ul.bars{
+  list-style-type: none;
+
+  line-height: 100px;
+  margin-top: 25px;
+}
+h1{
+  font-size: 60px;
+
+  line-height: 150%;
+  font-family: Helvetica,sans-serif;
+  font-weight: 500;
+  margin-left: 30px;
+}
+h2{
+  font-size: 35px;
+  margin-left: 30px;
+  margin-top: 25px;
+  color: FireBrick;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+}
+div.bar{
+  background-color: FireBrick;
+  width: 40px;
+  height: 40px;
+
+}
+
+div.blocks{
+  height: 23px;
+  background-color:#e1eaea;
+}
