@@ -1,0 +1,233 @@
+<%@course = Course.find(params[:id])%>
+<head>
+
+<%= javascript_tag do %>
+<%@e = @course.enrolls %>
+<%@grades = @e.pluck(:percentage)%>
+
+var grades = <%= @grades.to_json %>;
+
+grades.sort();
+
+function update(){
+  for(i = 0; i < 11; i++){
+    var count = 0;
+    for(j = grades.length - 1; j >= 0; j--){
+      if(grades[j] >= document.getElementsByName("bounds")[i+1].value &&
+    grades[j] <= document.getElementsByName("bounds")[i].value){
+        count++;
+      }
+    }
+
+    document.getElementsByClassName("bar")[i].style.width = count*40 + "px";
+  }
+}
+<%end%>
+
+<style>
+div.lb{
+  float: left;
+  width: 50%;
+  height: auto;
+  margin-top: 40px;
+
+  margin-left: 80px;
+  background-color: #e1eaea;
+
+}
+div.lbleft{
+  float: left;
+
+  margin-left: 50px;
+  margin-top: 0px;
+}
+ul.max2f{
+  float:left;
+  line-height: 350%;
+  list-style-type: none;
+  font-size: 30px;
+  font-weight: 600;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+
+  margin-top: auto;
+}
+div.lbright{
+  float: right;
+
+  margin-right:250px;
+  line-height: 450%;
+
+}
+ul.inputboxes{
+  float:right;
+  list-style-type: none;
+
+  margin-top: 0px;
+  line-height: 650%;
+}
+input[type="number"]{
+  width: 160px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0px;
+
+}
+div.histogram{
+  float: right;
+  background-color: #e1eaea;
+
+  margin-top: 40px;
+  margin-right: 60px;
+  width: 37%;
+}
+ul.max2f2{
+  float:left;
+  line-height: 150%;
+  list-style-type: none;
+  line-height: 250%;
+
+}
+div.hleft{
+  float: left;
+
+  font-size: 25px;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+  font-weight: 600;
+  margin-left: 25px;
+}
+div.hright{
+  float: right;
+
+  margin-right: 50px;
+  width: 300px;
+}
+ul.bars{
+  list-style-type: none;
+
+  line-height: 100px;
+  margin-top: 25px;
+}
+h1{
+  font-size: 60px;
+
+  line-height: 150%;
+  font-family: Helvetica,sans-serif;
+  font-weight: 500;
+  margin-left: 30px;
+}
+h2{
+  font-size: 35px;
+  margin-left: 30px;
+  margin-top: 25px;
+  color: FireBrick;
+  font-family:  "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
+}
+div.bar{
+  background-color: FireBrick;
+  width: 40px;
+  height: 40px;
+
+}
+
+div.blocks{
+  height: 23px;
+  background-color:#e1eaea;
+}
+</style>
+</head>
+
+
+
+<body>
+
+  <h1> Histogram Generator</h1>
+
+  <div class="lb">
+    <h2>Lower bounds</h2>
+
+    <div class="lbleft">
+      <ul class="max2f">
+        <li>Max </li>
+        <li>A+</li>
+        <li>A</li>
+        <li>A-</li>
+        <li>B+</li>
+        <li>B</li>
+        <li>B-</li>
+        <li>C+</li>
+        <li>C</li>
+        <li>C-</li>
+        <li>D</li>
+        <li>F</li>
+      </ul>
+    </div>
+
+    <div class="lbright">
+      <ul class="inputboxes">
+        <li> <input name="bounds" type="number" oninput="update()" value="100.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="95.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="90.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="85.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="80.00"></li>
+        <li> <input name="bounds" type="number" oninput="update()" value="75.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="70.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="65.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="60.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="55.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="50.00"></li>
+        <li><input name="bounds" type="number" oninput="update()" value="0.00"></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="histogram">
+    <h2>Histogram</h2>
+    <div class="hleft">
+      <ul class="max2f2">
+        <li>A+</li>
+        <li>A</li>
+        <li>A-</li>
+        <li>B+</li>
+        <li>B</li>
+        <li>B-</li>
+        <li>C+</li>
+        <li>C</li>
+        <li>C-</li>
+        <li>D</li>
+        <li>F</li>
+      </ul>
+    </div>
+
+    <div class="hright">
+      <ul class="bars">
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+        <li><div class="bar"></div></li>
+        <li><div class="blocks"></div></li>
+      </ul>
+  </div>
+
+
+
+</body>
+</html>
